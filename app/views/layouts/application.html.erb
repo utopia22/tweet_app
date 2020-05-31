@@ -14,17 +14,10 @@
         <%= link_to("TweetApp", "/") %>
       </div>
       <ul class="header-menus">
-        <!-- 現在ログイン中のユーザーを取得し、変数current_userに代入してください -->
-        <% current_user = User.find_by(id: session[:user_id]) %>
-
         <!-- if文の条件を書き換えてください -->
-        <% if current_user %>
+        <% if @current_user %>
           <li>
-            <!-- 以下の「現在ログインしているユーザーのid:」を削除してください -->
-
-            <!-- Log In中のユーザーの名前を表示し、詳細ページのリンクとなるように書き換えてください -->
-            <%= link_to(current_user.name,"/users/#{current_user.id}") %>
-
+            <%= link_to(@current_user.name,"/users/#{@current_user.id}") %>
           </li>
           <li>
             <%= link_to("投稿一覧", "/posts/index") %>
