@@ -62,7 +62,7 @@ class UsersController < ApplicationController
       @user = User.find_by(email: params[:email])
 
       # if文の条件を&&とauthenticateメソッドを用いて書き換えてください
-      if @user 
+      if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         flash[:notice] = "ログインしました"
         redirect_to("/posts/index")
